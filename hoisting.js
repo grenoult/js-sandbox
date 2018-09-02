@@ -13,7 +13,11 @@ console.log(foo); // '123' as foo will be instanciated in the first compiler pas
 var foo;
 
 bar = 123;
-console.log(bar); // 'ReferenceError: bar is not defined' as bar will be instanciated in the first compiler pass (initialization), but not assigned in the second pass (declaration): TDZ error
+console.log(bar); /* 'ReferenceError: bar is not defined' 
+ as bar will be instanciated in the first compiler pass (initialization), 
+ but not assigned in the second pass (declaration): TDZ error.
+ This is to prevent assigning a value to variable before declaring it.
+*/
 let bar;
 
 
