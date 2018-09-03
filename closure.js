@@ -44,3 +44,47 @@ for (let i = 0; i < 10; i++) {
 for (var j = 0; j < 10; j++) {
     functionArray[j]();
 }
+
+// 4 -- Example from Exercise 4 of Frontend Masters - Deep Javascript Foundations (Kyle Simpson)
+
+/**
+ * Here the click event will have access to its scope and all its parents scope,
+ * so it will have access to setupWorkDescription scope.
+ */
+
+function setupWorkDescription(workEntryData, $workDescription) {
+    $workDescription.text(formatWorkDescription(workEntryData.description));
+
+    if (workEntryData.description.length > maxVisibleWorkDescriptionLength) {
+        $workDescription
+            .addClass("shortened")
+            .on("click", function onClick() {
+                $workDescription
+                    .removeClass("shortened")
+                    .off("click", onClick)
+                    .text(workEntryData.description);
+            });
+    }
+}
+
+/**
+ * A similar example
+ */
+function setupWorkDescription(workEntryData, $workDescription) {
+    $workDescription.text(formatWorkDescription(workEntryData.description));
+
+    if (workEntryData.description.length > maxVisibleWorkDescriptionLength) {
+        $workDescription.addClass("shortened");
+        $workDescription.on("click", toggleLongDescription);
+    }
+
+    function toggleLongDescription() {
+        if ($workDescription.hasClass("shortened")) {
+            $workDescription.removeClass("shortened");
+            $workDescription.text(workEntryData.description);
+        } else {
+            $workDescription.addClass("shortened");
+            $workDescription.text(formatWorkDescription(workEntryData.description));
+        }
+    }
+}
