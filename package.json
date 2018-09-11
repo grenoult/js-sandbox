@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "module-test": "babel-node ./module/main.js --presets es2015,stage-2"
+  }
+}

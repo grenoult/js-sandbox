@@ -2,7 +2,7 @@
 console.log(hello);
 var hello;
 hello = "I'm a variable";
-// is equivalent to:
+// is equivalent to (in terms of declaration):
 var hello;
 console.log(hello);
 hello = "I'm a variable";
