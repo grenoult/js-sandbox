@@ -1,4 +1,45 @@
 /**
+ * Boolean coercion
+ * 
+ * See https://github.com/getify/You-Dont-Know-JS/blob/master/types%20%26%20grammar/ch4.md#toboolean
+ * Everything that is:
+ *  - undefined
+ *  - null
+ *  - false
+ *  - +0, -0, and NaN
+ *  - ""
+ *  - false
+ * Will be considered as false. Everything else will be true.
+ */
+
+console.log('\nBoolean coercion:');
+console.log('undefined: \t' + Boolean(undefined));
+console.log('null: \t\t' + Boolean(null));
+console.log('false: \t\t' + Boolean(false));
+console.log('+0: \t\t' + Boolean(+0));
+console.log('-0: \t\t' + Boolean(-0));
+console.log('NaN: \t\t' + Boolean(NaN));
+console.log('"": \t\t' + Boolean(""));
+console.log('false: \t\t' + Boolean(false));
+
+/**
+ * So! Big warning here! These values are considered true and this is very confusing:
+ *  - "false"
+ *  - "0"
+ *  - []
+ *  - {}
+ *  - function() {}
+ *  - everything else...
+ */
+
+console.log('"false": \t' + Boolean("false"));
+console.log('"0": \t\t' + Boolean("0"));
+console.log('[]: \t\t' + Boolean([]));
+console.log('{ }: \t\t' + Boolean({}));
+console.log('function() { }: ' + Boolean(function () { }));
+
+
+/**
  * To boolean
  * 
  * The double exclamations points can be (very) confusing.
@@ -46,7 +87,7 @@ if (arr) {
 }
 
 if (arr == false) {
-    // This is because == will try to compare numbers, so Array will be converted (toPrimitive) to string (""), then to a number (0), so it's false.
+    // This is because == will try to compare numbers, so Array will be converted (toPrimitive, then toString) to string (""), then to a number (0), so it's false.
     // Again, don't use `==` for boolean comparaison. Too confusing.
     console.log('arr is false');
 }
@@ -82,3 +123,26 @@ false == {};            // false
 0 == NaN;               // false
 0 == [];                // true -- UH OH!
 0 == {};                // false
+
+/**
+ * We may think:
+ *  == checks value
+ *  === checks value and type
+ * 
+ * But it's wrong, actually:
+ *  == allows coercion
+ *  === disallows coercion
+ * 
+ * Specifications are pretty straight forward:
+ *  https://www.ecma-international.org/ecma-262/9.0/index.html#sec-abstract-equality-comparison
+ */
+
+/**
+ * As a general rule, it's better to do === comparaison.
+ */
+
+/**
+ * However, we can sometimes use ==.
+ * Why? Because left and right members are converted to number.
+ */
+console.log('5' == 5); // true
