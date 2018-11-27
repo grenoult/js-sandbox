@@ -32,3 +32,13 @@ var obj = {
     }
 };
 obj.getValue(); // 1
+
+/**
+ * We can add also default parameters
+ */
+var triple = (x = 3) => x*3;
+console.log(triple()); // 9
+console.log(triple(10)); // 30
+
+// Same for old function:
+var triple = function triple(x = 3) { return x*3; }
