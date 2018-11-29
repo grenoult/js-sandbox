@@ -28,3 +28,13 @@
     console.log(second); // 'b'
     console.log(theRest); // ['c']
 })(...arr);
+
+// Example 5: replace concat: gathering array spreading
+var arrayOne = ['a', 'b', 'c'];
+var arrayTwo = ['d', 'e'];
+console.log([...arrayOne, ...arrayTwo]); // [ 'a', 'b', 'c', 'd', 'e' ]
+console.log(['z', ...arrayOne, ...arrayTwo, 'f']); // [ 'z', 'a', 'b', 'c', 'd', 'e', 'f' ]
+
+// Example 6: split each charater of a string in an array
+// This is because string is iterable
+console.log([...'Guillaume']); // [ 'G', 'u', 'i', 'l', 'l', 'a', 'u', 'm', 'e' ]
