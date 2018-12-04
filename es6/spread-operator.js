@@ -38,3 +38,19 @@ console.log(['z', ...arrayOne, ...arrayTwo, 'f']); // [ 'z', 'a', 'b', 'c', 'd',
 // Example 6: split each charater of a string in an array
 // This is because string is iterable
 console.log([...'Guillaume']); // [ 'G', 'u', 'i', 'l', 'l', 'a', 'u', 'm', 'e' ]
+
+// Example 7:
+function foo(a, b, c, ...rest) {
+    return [a, ...rest];
+}
+
+function bar() {
+    var a1 = [2, 4];
+    var a2 = [6, 8, 10, 12];
+
+    return foo(...a1, ...a2);
+}
+
+console.log(
+    bar().join("") === "281012"
+);

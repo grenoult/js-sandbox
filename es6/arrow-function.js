@@ -2,6 +2,9 @@ var double = x => x*2;
 
 double(10); // 20
 
+// Example to return an object, as curly braces are used
+var getObj = () => ({id: 1, name: 'test'});
+
 /**
  * Arrow functions and binding.
  * Arrow function don't have their own lexical context. They use the parent one.
