@@ -47,3 +47,28 @@ var now = function() {
     return myGen().next().value;
 }
 console.log(now());
+
+// Example 4: custom iterator using destructuring in iterator parameters
+var numbers = {
+    *[Symbol.iterator]({ start = 0, end = 100, step = 1 } = {}) {
+        for (let i = start; i <= end; i = i + step) {
+            yield i;
+        }
+    }
+};
+
+// should print 0..100 by 1s
+for (let num of numbers) {
+    console.log(num); // 1 2 3 4 ... 99 100
+}
+
+// should print 6..30 by 4s
+for (let num of numbers[Symbol.iterator]({
+    start: 6,
+    end: 30,
+    step: 4
+})) {
+    console.log(num); // 6 10 14 .. 26 30
+}
+
+
