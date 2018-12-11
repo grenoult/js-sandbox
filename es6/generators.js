@@ -71,4 +71,23 @@ for (let num of numbers[Symbol.iterator]({
     console.log(num); // 6 10 14 .. 26 30
 }
 
+// Example 5: ranges
+Number.prototype[Symbol.iterator] = function*() {
+    // `this` is a Number
+    var min = 0, max = 0;
+
+    if (this < 0) {
+        min = this;
+    } else if (this > 0) {
+        max = this;
+    }
+
+    for (var i = min; i <= max; i++) {
+        yield i*1; // *1 to get value only
+    }
+}
+console.log([...10]); // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+console.log([...-7]); // [ -7, -6, -5, -4, -3, -2, -1, 0 ]
+console.log([...0]); // []
+
 
